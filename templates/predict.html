@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Predict</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Predict Earthquake Magnitude</h1>
+
+    {% if errors %}
+      <div class="error-box">
+        <b>Please fix these:</b>
+        <ul>
+          {% for e in errors %}
+            <li>{{ e }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endif %}
+
+    <form method="POST">
+      <label>Choose Model</label>
+      <select name="model_name">
+        {% for m in model_names %}
+          <option value="{{ m }}"
+            {% if old and old.get('model_name') == m %}selected
+            {% elif (not old) and m==best_model %}selected
+            {% endif %}>
+            {{ m }}
+          </option>
+        {% endfor %}
+      </select>
+
+      <div class="card" style="margin-top:14px;">
+        <h3>Model Performance (Test Set)</h3>
+        <table>
+          <tr><th>Model</th><th>MAE</th><th>RMSE</th><th>R²</th></tr>
+          {% for name, m in metrics.items() %}
+          <tr>
+            <td>{{ name }}</td>
+            <td>{{ "%.3f"|format(m["MAE"]) }}</td>
+            <td>{{ "%.3f"|format(m["RMSE"]) }}</td>
+            <td>{{ "%.3f"|format(m["R2"]) }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+        <small>Lower RMSE is better. R² closer to 1 is better.</small>
+      </div>
+
+      <div class="grid">
+        {% for col in feature_cols %}
+          <div class="field">
+            <label>{{ col }}</label>
+            <input
+              type="text"
+              name="{{ col }}"
+              value="{% if old %}{{ old.get(col, '') }}{% endif %}"
+              placeholder="{% if col=='latitude' %}e.g. 27.7172{% elif col=='longitude' %}e.g. 85.3240{% elif col=='depth' %}e.g. 10{% else %}Enter {{ col }}{% endif %}"
+            >
+          </div>
+        {% endfor %}
+      </div>
+
+      <button class="btn" type="submit">Predict</button>
+      <a class="btn-outline" href="/">Back</a>
+    </form>
+  </div>
+</body>
+</html>

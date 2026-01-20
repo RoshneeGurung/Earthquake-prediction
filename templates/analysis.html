@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Analysis</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Visualizations & Model Analysis</h1>
+    <p><b>Best model:</b> {{ best_model }}</p>
+
+    <!-- METRICS ANCHOR -->
+    <a id="metrics"></a>
+    <div class="card">
+      <h2>Model Evaluation Metrics</h2>
+      <table>
+        <tr>
+          <th>Model</th><th>MAE</th><th>RMSE</th><th>R²</th>
+        </tr>
+        {% for name, m in metrics.items() %}
+        <tr>
+          <td>{{ name }}</td>
+          <td>{{ "%.4f"|format(m["MAE"]) }}</td>
+          <td>{{ "%.4f"|format(m["RMSE"]) }}</td>
+          <td>{{ "%.4f"|format(m["R2"]) }}</td>
+        </tr>
+        {% endfor %}
+      </table>
+      <small>
+        Lower RMSE indicates better prediction accuracy. R² closer to 1 indicates stronger fit.
+      </small>
+    </div>
+
+    <!-- BEFORE ANCHOR -->
+    <a id="before"></a>
+    <h2 style="margin-top:18px;">Before Cleaning / Before Training (Evidence)</h2>
+    <div class="plots">
+      {% for p in plot_files if p.startswith("before") %}
+        <div class="plot-card">
+          <p><b>{{ p }}</b></p>
+          <img src="{{ url_for('static', filename='plots/' + p) }}" alt="{{ p }}">
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- TRAINING ANCHOR -->
+    <a id="training"></a>
+    <h2 style="margin-top:18px;">After Training (Evidence)</h2>
+    <div class="plots">
+      {% for p in plot_files if p.startswith("after") %}
+        <div class="plot-card">
+          <p><b>{{ p }}</b></p>
+          <img src="{{ url_for('static', filename='plots/' + p) }}" alt="{{ p }}">
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="btn-row">
+      <a class="btn" href="/predict">Predict</a>
+      <a class="btn-outline" href="/">Home</a>
+    </div>
+  </div>
+</body>
+</html>

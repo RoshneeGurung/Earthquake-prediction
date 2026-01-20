@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Earthquake AI - Magnitude Prediction</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav">
+      <div class="nav-left">
+        <div class="logo-badge">AI</div>
+        <div class="brand">
+          <div class="brand-title">Earthquake AI</div>
+        </div>
+      </div>
+
+      <nav class="nav-right">
+        <a href="/" class="nav-link active">Home</a>
+        <a href="/predict" class="nav-link">Predict</a>
+        <a href="/analysis" class="nav-link">Analysis</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero">
+
+      <!-- LEFT: MAIN CARD -->
+      <div class="hero-card">
+        <h1>Predict earthquake magnitude using machine learning</h1>
+
+        <p class="hero-text">
+          This web application estimates earthquake magnitude (mag) from seismic and
+          location-related features. It compares multiple regression models and displays a confidence
+          range based on RMSE.
+        </p>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-label">Best model (RMSE)</div>
+            <div class="stat-value">{{ best_model }}</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Models compared</div>
+            <div class="stat-value">Linear • KNN • Random Forest</div>
+          </div>
+
+          <div class="stat">
+            <div class="stat-label">Output</div>
+            <div class="stat-value">Magnitude + Category + ±RMSE</div>
+          </div>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn" href="/predict">Start Prediction</a>
+          <a class="btn-outline" href="/analysis">View Visualizations</a>
+        </div>
+      </div>
+
+      <!-- RIGHT: SIDE CARD -->
+      <aside class="side-card">
+        <h2>How it works</h2>
+
+        <ol class="steps">
+          <li>
+            <b>Load & clean dataset</b><br />
+            <a class="mini-link" href="/analysis#before">See cleaning & distributions</a>
+          </li>
+
+          <li>
+            <b>Train ML models</b><br />
+            <a class="mini-link" href="/analysis#training">See training outputs & plots</a>
+          </li>
+
+          <li>
+            <b>Evaluate performance</b><br />
+            <a class="mini-link" href="/analysis#metrics">See MAE, RMSE, R² table</a>
+          </li>
+
+          <li>
+            <b>Deploy web application</b><br />
+            <a class="mini-link" href="/predict">Try live prediction</a>
+          </li>
+        </ol>
+      </aside>
+
+    </main>
+
+    <!-- FOOTER (clean) -->
+    <footer class="footer footer-clean">
+      <div>© 2026 Earthquake AI • Roshnee Gurung</div>
+    </footer>
+  </div>
+</body>
+</html>

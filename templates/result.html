@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Result</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>Prediction Result</h1>
+
+    <div class="card">
+      <p><b>Model used:</b> {{ model_name }}</p>
+      <p><b>Predicted magnitude:</b> {{ prediction }}</p>
+      <p><b>Category:</b> {{ category }}</p>
+
+      <p><b>Expected range:</b> {{ low }} to {{ high }} (± {{ "%.2f"|format(rmse) }})</p>
+      <small>Range is based on RMSE (model error), not a guarantee.</small>
+
+      <hr>
+
+      <h3>Model Metrics</h3>
+      <p><b>MAE:</b> {{ "%.4f"|format(metrics["MAE"]) }}</p>
+      <p><b>RMSE:</b> {{ "%.4f"|format(metrics["RMSE"]) }}</p>
+      <p><b>R²:</b> {{ "%.4f"|format(metrics["R2"]) }}</p>
+
+      <div class="note">
+        <small>
+          This system is intended for decision-support and educational purposes.
+        </small>
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <a class="btn" href="/predict">Try Another</a>
+      <a class="btn-outline" href="/analysis">View Analysis</a>
+      <a class="btn-outline" href="/">Home</a>
+    </div>
+  </div>
+</body>
+</html>
