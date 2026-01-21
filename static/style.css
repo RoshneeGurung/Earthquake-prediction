@@ -1,6 +1,4 @@
-/* =========================
-   GLOBAL
-========================= */
+
 :root {
   --primary: #2b59ff;
   --primary-light: #edf2ff;
@@ -25,9 +23,7 @@ body {
   color: var(--text);
 }
 
-/* =========================
-   COMMON CONTAINER (Predict/Result/Analysis)
-========================= */
+
 .container {
   max-width: 980px;
   margin: 40px auto;
@@ -43,9 +39,7 @@ h1, h2, h3 { margin-top: 0; }
 small { color: var(--muted); }
 .note { margin-top: 14px; }
 
-/* =========================
-   BUTTONS (used everywhere)
-========================= */
+
 .btn-row {
   margin-top: 16px;
   display: flex;
@@ -80,9 +74,7 @@ small { color: var(--muted); }
 
 .btn-outline:hover { background: var(--primary-light); }
 
-/* =========================
-   FORMS (Predict page)
-========================= */
+
 .grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -110,9 +102,7 @@ input:focus, select:focus {
   box-shadow: 0 0 0 4px rgba(43, 89, 255, 0.12);
 }
 
-/* =========================
-   CARDS / BOXES
-========================= */
+
 .card {
   background: #f8f9ff;
   padding: 16px;
@@ -128,9 +118,7 @@ input:focus, select:focus {
   margin-bottom: 16px;
 }
 
-/* =========================
-   TABLES (Analysis page)
-========================= */
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -150,9 +138,6 @@ th {
   text-align: left;
 }
 
-/* =========================
-   PLOTS (Analysis page)
-========================= */
 .plots {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -174,18 +159,14 @@ th {
   border: 1px solid #eee;
 }
 
-/* =========================
-   HOME PAGE WRAPPER
-========================= */
+
 .page {
   max-width: 1120px;
   margin: 0 auto;
   padding: 18px 18px 28px;
 }
 
-/* =========================
-   NAVBAR (Home)
-========================= */
+
 .nav {
   display: flex;
   justify-content: space-between;
@@ -235,9 +216,7 @@ th {
   color: white;
 }
 
-/* =========================
-   HERO LAYOUT (Home)
-========================= */
+
 .hero {
   display: grid;
   grid-template-columns: 2.2fr 1fr;
@@ -246,9 +225,6 @@ th {
   margin-top: 16px;
 }
 
-/* =========================
-   HERO CARD (Home)
-========================= */
 .hero-card {
   background: var(--card);
   padding: 26px;
@@ -269,9 +245,6 @@ th {
   color: #344054;
 }
 
-/* =========================
-   STATS (Home)
-========================= */
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -298,18 +271,13 @@ th {
   font-size: 14px;
 }
 
-/* =========================
-   ACTION BUTTONS (Home)
-========================= */
 .hero-actions {
   display: flex;
   gap: 12px;
   margin-top: 20px;
 }
 
-/* =========================
-   SIDE CARD (Home)
-========================= */
+
 .side-card {
   background: var(--card);
   padding: 22px;
@@ -318,7 +286,7 @@ th {
   border: 1px solid var(--border);
   height: fit-content;
 
-  /* keep on right while scrolling */
+
   position: sticky;
   top: 24px;
 }
@@ -345,9 +313,6 @@ th {
 
 .mini-link:hover { text-decoration: underline; }
 
-/* =========================
-   FOOTER (Home)
-========================= */
 .footer {
   margin-top: 22px;
   padding: 16px 8px;
@@ -357,9 +322,7 @@ th {
 
 .footer-clean { justify-content: flex-start; }
 
-/* =========================
-   RESPONSIVE
-========================= */
+
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; }
   .hero-stats { grid-template-columns: 1fr; }
